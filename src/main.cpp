@@ -1,4 +1,5 @@
 #include "scramble.hpp"
+
 #include <iostream>
 #include <ncurses.h>
 
@@ -18,8 +19,7 @@ int main() {
 	// refresh();
 	//
 	// endwin();
-
-	const Scramble s(5);
+	const Scramble s(18);
 
 	std::cout << "skrambel:\n" << s << "\n";
 

@@ -1,15 +1,17 @@
 #pragma once
 
 #include "move.hpp"
+
 #include <list>
 #include <iostream>
+#include <string>
 
 class Scramble {
 
 public:
 	explicit Scramble(int length);
 
-	// void addMove(const Move& move);
+	[[nodiscard]] std::string toString() const;
 
 private:
 
