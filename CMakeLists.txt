@@ -5,6 +5,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 project(3style)
 
+find_package(Curses REQUIRED)
+include_directories(${CURSES_INCLUDE_DIR})
+
 set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS ProjectOptions.cmake)
 
 include(CMakeDependentOption)
@@ -15,7 +18,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_library(project_warnings INTERFACE)
 add_library(project_options INTERFACE)
 
-option(project_WARNINGS_AS_ERRORS "Treat Warnings As Errors" ON)
+option(project_WARNINGS_AS_ERRORS "Treat Warnings As Errors" OFF)
 option(project_ENABLE_CLANG_TIDY "Enable clang-tidy" ON)
 
 function(

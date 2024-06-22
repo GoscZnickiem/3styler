@@ -1,7 +1,14 @@
 set(SOURCES
 
-	test.cpp
+	main.cpp
+
+	scramble.cpp
+	scramble.hpp
+	move.cpp
+	move.hpp
 
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
+
+target_link_libraries(${PROJECT_NAME} ${CURSES_LIBRARIES})
