@@ -7,7 +7,7 @@
 #include <random>
 
 Move::Move(std::string label)
-	:m_label(std::move(label)), m_axis(determineAxis()) { }
+	:m_label(std::move(label)), m_axis(determineAxis(m_label)), m_layer(determineLayer(m_label)) {}
 
 Move::Move(const std::string& m1, Axis a1, Axis a2) {
 	std::random_device rd;
@@ -36,9 +36,10 @@ Move::Move(const std::string& m1, Axis a1, Axis a2) {
 				break;
 			default: break;
 		}
-		m_axis = determineAxis();
+		m_axis = determineAxis(m_label);
 		if(m_label.at(0) != c && (a1 != a2 || a1 != m_axis)) break;
 	}
+	m_layer = determineLayer(m_label);
     std::uniform_int_distribution<> distrAmount(0, 2);
 	switch (distrAmount(gen)) {
 			case 1:
@@ -51,8 +52,8 @@ Move::Move(const std::string& m1, Axis a1, Axis a2) {
 	}
 }
 
-Move::Axis Move::determineAxis() const {
-	switch(std::toupper(m_label.at(0))) {
+Move::Axis Move::determineAxis(const std::string& label) {
+	switch(std::toupper(label.at(0))) {
 		case 'R':
 		case 'L':
 			return Axis::X;
@@ -68,12 +69,32 @@ Move::Axis Move::determineAxis() const {
 	}
 }
 
+int Move::determineLayer(const std::string &label) {
+	switch(label.at(0)) {
+		case 'R':
+		case 'U':
+		case 'F':
+			return 1;
+		case 'L':
+		case 'D':
+		case 'B':
+			return -1;
+		default:
+			std::cerr << "Unknown move\n";
+			return 0;
+	}
+}
+
 Move::Axis Move::getAxis() const {
 	return m_axis;
 }
 
 std::string Move::getName() const {
 	return m_label;
+}
+
+int Move::getLayer() const {
+	return m_layer;
 }
 
 std::string Move::toString() const {
