@@ -50,6 +50,7 @@ Move::Move(const std::string& m1, Axis a1, Axis a2) {
 				break;
 			default: break;
 	}
+	m_amount = determineAmount(m_label);
 }
 
 Move::Axis Move::determineAxis(const std::string& label) {

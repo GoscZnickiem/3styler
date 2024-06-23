@@ -11,6 +11,8 @@ class Scramble {
 public:
 	explicit Scramble(int length);
 
+	[[nodiscard]] const std::list<Move>& getMoves() const;
+
 	[[nodiscard]] std::string toString() const;
 
 private:

@@ -12,6 +12,10 @@ Scramble::Scramble(int length) {
 	}
 }
 
+const std::list<Move>& Scramble::getMoves() const {
+	return m_moves;
+}
+
 std::string Scramble::toString() const {
 	std::string s;
 	bool first = true;

@@ -6,6 +6,8 @@ set(SOURCES
 	scramble.hpp
 	move.cpp
 	move.hpp
+	cube.hpp
+	cube.cpp
 
 )
 

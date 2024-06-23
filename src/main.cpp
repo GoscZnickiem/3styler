@@ -1,3 +1,4 @@
+#include "cube.hpp"
 #include "scramble.hpp"
 
 #include <iostream>
@@ -22,5 +23,9 @@ int main() {
 	const Scramble s(18);
 
 	std::cout << "skrambel:\n" << s << "\n";
+
+	Cube cube;
+
+	cube.applyScramble(s);
 
 }

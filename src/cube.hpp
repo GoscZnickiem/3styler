@@ -1,10 +1,9 @@
 #pragma once
 
-#include "piece.hpp"
 #include "move.hpp"
 #include "scramble.hpp"
 
-#include <array>
+#include <string>
 
 class Cube {
 
@@ -15,9 +14,13 @@ public:
 
 	void applyScramble(const Scramble& scramble);
 
-private:
-	std::array<Piece, 8> m_corners;
+	[[nodiscard]] std::string toString() const;
 
-	static const std::array<Piece, 8> s_corners;
+private:
+	void rotateCorners(int a1, int a2, int a3, int a4, int amount);
+
+	std::string m_corners;
+
+	static const std::string s_corners;
 
 };
