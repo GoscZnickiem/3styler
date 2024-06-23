@@ -7,7 +7,7 @@
 #include <random>
 
 Move::Move(std::string label)
-	:m_label(std::move(label)), m_axis(determineAxis(m_label)), m_layer(determineLayer(m_label)) {}
+	:m_label(std::move(label)), m_axis(determineAxis(m_label)), m_layer(determineLayer(m_label)), m_amount(determineAmount(m_label)) {}
 
 Move::Move(const std::string& m1, Axis a1, Axis a2) {
 	std::random_device rd;
@@ -85,6 +85,14 @@ int Move::determineLayer(const std::string &label) {
 	}
 }
 
+int Move::determineAmount(const std::string &label) {
+	if(label.size() == 1)
+		return 1;
+	if(label.at(1) == 2)
+		return 2;
+	return 3;
+}
+
 Move::Axis Move::getAxis() const {
 	return m_axis;
 }
@@ -95,6 +103,10 @@ std::string Move::getName() const {
 
 int Move::getLayer() const {
 	return m_layer;
+}
+
+int Move::getAmount() const {
+	return m_amount;
 }
 
 std::string Move::toString() const {

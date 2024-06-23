@@ -17,11 +17,15 @@ public:
 
 	[[nodiscard]] static int determineLayer(const std::string& label);
 
+	[[nodiscard]] static int determineAmount(const std::string& label);
+
 	[[nodiscard]] Axis getAxis() const;
 	
 	[[nodiscard]] std::string getName() const;
 
 	[[nodiscard]] int getLayer() const;
+	
+	[[nodiscard]] int getAmount() const;
 
 	[[nodiscard]] std::string toString() const;
 
@@ -30,6 +34,7 @@ private:
 	std::string m_label;
 	Axis m_axis;
 	int m_layer;
+	int m_amount;
 
 	friend std::ostream& operator<< (std::ostream& os, const Move& s);
 };
