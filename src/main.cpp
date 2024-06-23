@@ -20,12 +20,15 @@ int main() {
 	// refresh();
 	//
 	// endwin();
-	const Scramble s(18);
+	const Scramble s(17);
 
 	std::cout << "skrambel:\n" << s << "\n";
 
 	Cube cube;
 
 	cube.applyScramble(s);
+	// cube.applyMove(Move("L"));
+
+	std::cout << cube.toString() << "\n";
 
 }

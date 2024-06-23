@@ -89,7 +89,7 @@ int Move::determineLayer(const std::string &label) {
 int Move::determineAmount(const std::string &label) {
 	if(label.size() == 1)
 		return 1;
-	if(label.at(1) == 2)
+	if(label.at(1) == '2')
 		return 2;
 	return 3;
 }
